@@ -11,11 +11,21 @@ jobs:
         run: sudo sh -c "echo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/force-unsafe-io"
 
       - name: install dependencies
-        run: |
-          sudo apt-get install \
-            libcairo2-dev \
-            libxi-dev libx11-dev x11proto-core-dev x11proto-dev libxt-dev libxfixes-dev libxinerama-dev libxrandr-dev \
-            libwayland-dev wayland-protocols
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          version: 1.0
+          packages: |
+            libcairo2-dev
+            libxi-dev
+            libx11-dev
+            x11proto-core-dev
+            x11proto-dev
+            libxt-dev
+            libxfixes-dev
+            libxinerama-dev
+            libxrandr-dev
+            libwayland-dev
+            wayland-protocols
 
       - name: build (GCC w/o libconfig)
         run: make clean && make
