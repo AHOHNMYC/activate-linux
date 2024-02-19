@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <windows.h>
 
+
 // Le classique https://stackoverflow.com/a/17387176
 void PrintLastError(void) {
     LPSTR messageBuffer = "";
